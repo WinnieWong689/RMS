@@ -37,7 +37,7 @@ public class AuthController {
 			}
 			response.sendRedirect(request.getContextPath()+ "/home");
 		}else{
-			request.setAttribute("msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+			request.setAttribute("msg", "ç”¨æˆ·å æˆ–å¯†ç é”™è¯¯!");
 			request.getRequestDispatcher("/").forward(request, response);
 		}
 	}
