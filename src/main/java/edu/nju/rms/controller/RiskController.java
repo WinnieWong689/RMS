@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.nju.rms.interceptor.Auth;
+import edu.nju.rms.interceptor.Role;
 import edu.nju.rms.model.RiskProject;
 import edu.nju.rms.service.RiskService;
 
 @Controller
-@RequestMapping(value="/home")
+@RequestMapping(value="")
 public class RiskController {
 	
 	private RiskService riskService;
@@ -19,7 +21,8 @@ public class RiskController {
 		this.riskService = riskService;
 	}	
 	
-	@RequestMapping(value="")
+	@Auth(Role.ADMIN)
+	@RequestMapping(value="/home")
 	public String getRiskProjectList(ModelMap model) {
 		List<RiskProject> projects = riskService.getAllRiskProject();
 		model.put("projects", projects);

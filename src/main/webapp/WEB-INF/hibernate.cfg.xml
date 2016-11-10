@@ -19,8 +19,8 @@
 		</property>
 		<property name="hibernate.connection.username">admin</property>
 		<property name="hibernate.connection.password">admin</property>
-		
 		<mapping class="edu.nju.rms.model.User" />
 		<mapping class="edu.nju.rms.model.RiskProject" />
+		
     </session-factory>
 </hibernate-configuration>

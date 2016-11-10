@@ -38,7 +38,7 @@ public class AuthController {
 			response.sendRedirect(request.getContextPath()+ "/home");
 		}else{
 			request.setAttribute("msg", "用户名或密码错误!");
-			request.getRequestDispatcher("").forward(request, response);
+			request.getRequestDispatcher("/").forward(request, response);
 		}
 	}
 	
