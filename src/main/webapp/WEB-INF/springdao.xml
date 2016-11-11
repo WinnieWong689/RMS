@@ -11,16 +11,33 @@
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
 	
-	<bean id="riskDao" class="edu.nju.rms.dao.RiskDaoImpl">
+	<bean id="riskProjectDao" class="edu.nju.rms.dao.RiskProjectDaoImpl">
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
-
+	
+	<bean id="riskItemDao" class="edu.nju.rms.dao.RiskItemDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="riskLevelDao" class="edu.nju.rms.dao.RiskLevelDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="riskTriggerDao" class="edu.nju.rms.dao.RiskTriggerDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="triggerGroupDao" class="edu.nju.rms.dao.TriggerGroupDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	
 	<bean id="userService" class="edu.nju.rms.service.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
 	<bean id="riskService" class="edu.nju.rms.service.RiskServiceImpl">
-		<property name="riskDao" ref="riskDao"></property>
+		<property name="riskProjectDao" ref="riskProjectDao"></property>
 	</bean>
 	
 	<bean id="authService" class="edu.nju.rms.service.AuthServiceImpl">

@@ -2,19 +2,19 @@ package edu.nju.rms.service;
 
 import java.util.List;
 
-import edu.nju.rms.dao.RiskDao;
+import edu.nju.rms.dao.RiskProjectDao;
 import edu.nju.rms.model.RiskProject;
 
 public class RiskServiceImpl implements RiskService {
 
-	private RiskDao riskDao;
+	private RiskProjectDao riskProjectDao;
 	
-	public void setRiskDao(RiskDao riskDao) {
-		this.riskDao = riskDao;
+	public void setRiskProjectDao(RiskProjectDao riskProjectDao) {
+		this.riskProjectDao = riskProjectDao;
 	}
 	
 	public List<RiskProject> getAllRiskProject() {
-		return riskDao.getAllRiskProject();
+		return riskProjectDao.getAllRiskProject();
 	}
 
 }

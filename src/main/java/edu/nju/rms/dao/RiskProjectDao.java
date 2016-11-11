@@ -4,7 +4,7 @@ import java.util.List;
 
 import edu.nju.rms.model.RiskProject;
 
-public interface RiskDao {
+public interface RiskProjectDao {
 
 	public List<RiskProject> getAllRiskProject();
 	

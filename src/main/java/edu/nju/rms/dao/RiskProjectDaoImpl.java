@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import edu.nju.rms.model.RiskProject;
 
 @Repository
-public class RiskDaoImpl implements RiskDao {
+public class RiskProjectDaoImpl implements RiskProjectDao {
 
 	private BaseDao baseDao;
 	

@@ -1,48 +1,37 @@
 package edu.nju.rms.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
 public class User {
 
-	@Id
-	private int uid;
+	private int id;
 	
-	private String name;
+	private String username;
 	
-	private String email;
+	private String nickname;
 	
 	private int role;
 	
 	private String password;
 	
+	private Set<RiskProject> projects;
+	
 	public User() {}
 
-	public int getUid() {
-		return uid;
+	@Id
+	public int getId() {
+		return id;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getRole() {
@@ -60,7 +49,31 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	@ManyToMany(mappedBy="members")
+	public Set<RiskProject> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(Set<RiskProject> projects) {
+		this.projects = projects;
+	}
 	
 	
 	

@@ -156,13 +156,14 @@
 
     </dependencies>
 
-    <build><!-- 
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
+                	<failOnMissingWebXml>false</failOnMissingWebXml>
                     <source>1.7</source>
                     <target>1.7</target>
                     <encoding>utf-8</encoding>
@@ -171,7 +172,7 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-        </plugins>-->
+        </plugins>
     	<finalName>rms</finalName>
     </build>
     

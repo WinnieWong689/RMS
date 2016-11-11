@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 	public int addUser(User user) {
 		boolean result = baseDao.save(user);
 		if (result) {
-			return user.getUid();
+			return user.getId();
 		} else {
 			return -1;
 		}
