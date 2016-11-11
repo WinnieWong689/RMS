@@ -17,8 +17,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+		this.userDao.addUser(user);
 	}
 
 	public User getUser(int uid) {

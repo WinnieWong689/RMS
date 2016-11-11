@@ -2,11 +2,10 @@ package edu.nju.rms.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import javax.transaction.Transactional;
 
 import edu.nju.rms.model.RiskProject;
 
-@Repository
 public class RiskProjectDaoImpl implements RiskProjectDao {
 
 	private BaseDao baseDao;
@@ -17,6 +16,12 @@ public class RiskProjectDaoImpl implements RiskProjectDao {
 	
 	public List<RiskProject> getAllRiskProject() {
 		return baseDao.getAllList(RiskProject.class);
+	}
+
+	@Transactional
+	@Override
+	public boolean addRiskProject(RiskProject project) {
+		return  baseDao.save(project);
 	}
 
 }

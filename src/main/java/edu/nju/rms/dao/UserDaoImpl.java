@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.springframework.stereotype.Repository;
 
 import edu.nju.rms.model.User;
 
-@Repository
 public class UserDaoImpl implements UserDao {
 	
 	private BaseDao baseDao;
@@ -50,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public User check(String username, String password) {
-		String hql = "from User where name='" + username +"' and password='" + password + "'";
+		String hql = "from User where username='" + username +"' and password='" + password + "'";
 		Session session = baseDao.getSession();
 		Query query = session.createQuery(hql);
 		@SuppressWarnings("rawtypes")
