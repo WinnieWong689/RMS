@@ -16,7 +16,7 @@ public class RiskTrigger {
 
 	private String content;
 	
-	private TriggerGroup group;
+	private RiskItem item;
 	
 	public RiskTrigger() {}
 
@@ -39,12 +39,12 @@ public class RiskTrigger {
 	}
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	public TriggerGroup getGroup() {
-		return group;
+	public RiskItem getItem() {
+		return item;
 	}
 
-	public void setGroup(TriggerGroup group) {
-		this.group = group;
+	public void setItem(RiskItem item) {
+		this.item = item;
 	}
 	
 	

@@ -37,7 +37,7 @@ public class RiskItem {
 	
 	private Date ctime;
 	
-	private Set<TriggerGroup> triggerGroups;
+	private Set<RiskTrigger> triggers;
 	
 	private Set<User> followers;
 	
@@ -114,12 +114,12 @@ public class RiskItem {
 
 	@OneToMany
 	@LazyCollection(LazyCollectionOption.EXTRA)
-	public Set<TriggerGroup> getTriggerGroups() {
-		return triggerGroups;
+	public Set<RiskTrigger> getTriggers() {
+		return triggers;
 	}
 
-	public void setTriggerGroups(Set<TriggerGroup> triggerGroups) {
-		this.triggerGroups = triggerGroups;
+	public void setTriggers(Set<RiskTrigger> triggers) {
+		this.triggers = triggers;
 	}
 
 	@ManyToMany
