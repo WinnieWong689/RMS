@@ -1,15 +1,19 @@
 package edu.nju.rms.service;
 
+import java.util.List;
+
 import edu.nju.rms.model.User;
 
 public interface UserService {
 	
-	public boolean updateUser(User user);
+	public boolean updateUser(String nickname, String password, int role);
 	
-	public void addUser(User user);
+	public int addUser(String username, String nickname, String password, int role);
 
 	public User getUser(int uid);
 	
 	public User check(String username, String password);
+
+	public List<User> getAllUsers();
 	
 }

@@ -19,7 +19,7 @@
 					out.print("<li><a href='#'>风险项目</a></li>");
 				}
 				if (request.getSession().getAttribute("admin") != null) {
-					out.print("<li><a href='#'>用户管理</a></li>");					
+					out.print("<li><a href='" + path + "/user'>用户管理</a></li>");					
 				}
       		%>
 		</ul>

@@ -22,10 +22,8 @@
 		
 		<mapping class="edu.nju.rms.model.User" />
 		<mapping class="edu.nju.rms.model.RiskProject" />
-		<mapping class="edu.nju.rms.model.RiskLevel" />
 		<mapping class="edu.nju.rms.model.RiskItem" />
 		<mapping class="edu.nju.rms.model.RiskTrigger" />
-		<mapping class="edu.nju.rms.model.TriggerGroup" />
 		
     </session-factory>
 </hibernate-configuration>
