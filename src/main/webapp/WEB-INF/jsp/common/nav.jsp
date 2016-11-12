@@ -6,9 +6,9 @@
 	String url = request.getRequestURI();
 %>
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
+  <div class="container">
   	<div class="navbar-header">
-      <a class="navbar-brand" href="#">RMS</a>
+      <a class="navbar-brand" href="#">RMS 风险管理系统</a>
     </div>
       
     <!-- Collect the nav links, forms, and other content for toggling -->

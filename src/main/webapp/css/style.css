@@ -1,0 +1,21 @@
+.page-header {
+	margin-top: 0;
+}
+
+.page-header .btn {
+	margin-top: 25px;
+	margin-left: 15px;
+}
+
+
+.show-grid {
+	margin-bottom: 15px;
+}
+
+.m-user-search-form .form-group {
+	margin-right: 20px;
+}
+
+.m-user-search-form label {
+	margin-right: 10px;
+}

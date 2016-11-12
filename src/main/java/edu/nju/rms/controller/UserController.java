@@ -32,7 +32,14 @@ public class UserController {
 	public String list(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		List<User> users = userService.getAllUsers();
 		model.addAttribute("users", users);
+		model.addAttribute("total", users.size());
 		return "/user/user_list";
+	}
+	
+	@Auth(Role.ADMIN)
+	@RequestMapping(value="/add", method=RequestMethod.GET)
+	public String add(HttpServletRequest request, ModelMap model) {
+		return "/user/new_user";
 	}
 	
 	@Auth(Role.ADMIN)
@@ -41,7 +48,7 @@ public class UserController {
 		String username = request.getParameter("username");
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
-		Integer role = (Integer) request.getAttribute("role");
+		Integer role = Integer.parseInt(request.getParameter("role"));
 		int result = -1;
 		if (username != null && nickname != null && password != null && role != null) {
 			result = userService.addUser(username, nickname, password, role);

@@ -44,7 +44,10 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<User> getAllUser() {
-		return baseDao.getAllList(User.class);
+		String hql = "from User where username != 'admin'";
+		Query query = baseDao.getSession().createQuery(hql);
+		List<User> list = query.list();
+		return list;
 	}
 
 	public User check(String username, String password) {
