@@ -1,15 +1,11 @@
 package edu.nju.rms.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +21,6 @@ public class RiskProject {
 	private String description;
 	
 	private Date ctime;
-	
-	private Set<User> members;
 	
 	public RiskProject() {}
 
@@ -70,21 +64,6 @@ public class RiskProject {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@ManyToMany
-	@JoinTable(
-			name="project_member", 
-			joinColumns={@JoinColumn(name="project_id")},
-			inverseJoinColumns= {@JoinColumn(name="user_id")})
-	public Set<User> getMembers() {
-		return members;
-	}
-
-	public void setMembers(Set<User> members) {
-		this.members = members;
-	}
-	
-	
+	}	
 	
 }

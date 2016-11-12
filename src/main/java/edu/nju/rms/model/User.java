@@ -23,8 +23,6 @@ public class User {
 	
 	private String password;
 	
-	private Set<RiskProject> projects;
-	
 	public User() {}
 
 	@Id
@@ -68,16 +66,5 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
-	@ManyToMany(mappedBy="members")
-	public Set<RiskProject> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(Set<RiskProject> projects) {
-		this.projects = projects;
-	}
-	
-	
 	
 }

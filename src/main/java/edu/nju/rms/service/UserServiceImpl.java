@@ -47,4 +47,16 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.getAllUser();
 	}
 
+	@Override
+	public boolean deleteUsers(String ids) {
+		int result = userDao.deleteUsers(ids);
+		String[] idArr = ids.split(",");
+		return result == idArr.length;
+	}
+
+	@Override
+	public boolean isExist(String username) {
+		return userDao.isExist(username);
+	}
+
 }

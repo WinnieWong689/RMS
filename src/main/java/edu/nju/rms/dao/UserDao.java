@@ -18,4 +18,8 @@ public interface UserDao {
 	
 	public User check(String username, String password);
 
+	public int deleteUsers(String ids);
+	
+	public boolean isExist(String username);
+
 }

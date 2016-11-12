@@ -29,18 +29,19 @@
 					<label for="select-role">角色</label>
 					<select class="form-control" id="select-role">
 						<option value="-1">全部</option>
-						<option value="1">普通用户</option>
-						<option value="2">其他</option>
+						<option value="1">负责人</option>
+						<option value="2">组员</option>
 					</select>
 				</div>
 			</form>
 			<div class="col-md-1">
-				<button class="btn btn-default col-md-12">搜索</button>
+				<button class="btn btn-default col-md-12" id="btn-search">搜索</button>
 			</div>
 		</div>
 		<div class="row show-grid">
 			<div class="col-md-12">
-				<div class="pull-left" style="display: inline-block; line-height: 28px; margin-right: 20px">共有${total}位用户</div><button class="btn btn-sm btn-default pull-left">删除选中</button>
+				<div class="pull-left" style="display: inline-block; line-height: 28px; margin-right: 20px">共有${total}位用户</div>
+				<button class="btn btn-sm btn-default pull-left" id="js-delete-btn" data-toggle="modal" data-target="#del-confirm-modal" disabled>删除选中</button>
 			</div>
 		</div>
 		<table class="table table-bordered">
@@ -62,10 +63,9 @@
 			  			<td>${user.nickname}</td>
 			  			<td>
 			  				<c:choose>
-								<c:when test="${user.role==1}">普通用户</c:when>
-								<c:when test="${user.role==2}">角色2</c:when>
-								<c:when test="${user.role==2}">角色3</c:when>
-								<c:otherwise>脏数据</c:otherwise>
+								<c:when test="${user.role==1}">负责人</c:when>
+								<c:when test="${user.role==2}">组员</c:when>
+								<c:otherwise>其他</c:otherwise>
 							</c:choose>
 						</td>
 					</tr>
@@ -73,6 +73,25 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<div class="modal fade" id="del-confirm-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+		      	<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+		        	<h4 class="modal-title">删除用户</h4>
+		      	</div>
+		      	<div class="modal-body">
+		      		<p>确认删除所选用户吗？</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="js-delete-confirm">确认</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
 	<script src="<%=request.getContextPath() %>/js/user.js"></script>
 </body>
 </html>

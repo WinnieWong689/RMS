@@ -16,6 +16,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public int addUser(User user) {
+		if (this.isExist(user.getUsername())){
+			return -1;
+		}
 		boolean result = baseDao.save(user);
 		if (result) {
 			return user.getId();
@@ -62,4 +65,20 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+	@Override
+	public int deleteUsers(String ids) {
+		String hql = "delete User where id in (" + ids + ")";
+		Session session = baseDao.getSession();
+		Query query = session.createQuery(hql);
+		int result = query.executeUpdate();
+		return result;
+	}
+
+	@Override
+	public boolean isExist(String username) {
+		String hql = "from User where username = '" + username + "'";
+		Query query = baseDao.getSession().createQuery(hql);
+		List<User> list = query.list();
+		return !list.isEmpty();
+	}
 }

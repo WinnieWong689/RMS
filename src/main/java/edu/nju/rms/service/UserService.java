@@ -15,5 +15,9 @@ public interface UserService {
 	public User check(String username, String password);
 
 	public List<User> getAllUsers();
+
+	public boolean deleteUsers(String ids);
+	
+	public boolean isExist(String username);
 	
 }
