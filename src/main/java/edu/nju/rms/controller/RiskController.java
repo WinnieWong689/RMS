@@ -1,8 +1,11 @@
 package edu.nju.rms.controller;
 
 import java.util.List;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -50,8 +53,8 @@ public class RiskController {
 	}
 	
 	@Auth(Role.FOLLOWER)
-	@RequestMapping(value="/risk/new_track_item", method=RequestMethod.GET)
-	public void addRiskItem(HttpServletRequest request,ModelMap model) {
+	@RequestMapping(value="/risk/add_track_item", method=RequestMethod.GET)
+	public String showRiskItemList(HttpServletRequest request,ModelMap model) {
 		return "/risk/add_track_item";
 	}
 	
