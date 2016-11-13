@@ -7,4 +7,14 @@ public class TrackItemDaoImpl implements TrackItemDao {
 	public void setBaseDao(BaseDao baseDao) {
 		this.baseDao = baseDao;
 	}
+	
+	@Override
+	public int addTrackItem(TrackItem item) {
+		boolean result = baseDao.save(item);
+		if (result) {
+			return user.getId();
+		} else {
+			return -1;
+		}
+	}
 }

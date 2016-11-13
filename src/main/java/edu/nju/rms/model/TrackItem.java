@@ -34,11 +34,11 @@ public class TrackItem {
 		this.id = id;
 	}
 
-	public int getItem_id() {
-		return item_id;
+	public int getItemId() {
+		return itemId;
 	}
 
-	public void setItem_id(int item_id) {
+	public void setItemId(int item_id) {
 		this.item_id = item_id;
 	}
 

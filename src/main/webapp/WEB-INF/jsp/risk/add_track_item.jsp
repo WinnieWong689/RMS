@@ -22,7 +22,7 @@
 		    		<label for="input-description">姓名</label>
 		    		<input type="text" class="form-control" name="discription" id="input-discription" required>
 		  		</div>
-		  		<a href="/risk"><button type="button" class="btn btn-default">返回</button></a>
+		  		<a href="/risk/risk_track_list"><button type="button" class="btn btn-default">返回</button></a>
 		  		<button type="submit" class="btn btn-primary" id="js-add-risk-item">添加</button>
 			</form>
 		</div>
