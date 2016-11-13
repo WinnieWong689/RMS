@@ -16,7 +16,7 @@ public class IndexController {
 	@RequestMapping(value="/")
 	public String welcome(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException{
 		if (request.getSession().getAttribute("uid") != null) {
-			response.sendRedirect(request.getContextPath() + "/home");
+			response.sendRedirect(request.getContextPath() + "/project");
 		}
 		String msg = (String) request.getAttribute("msg");
 		if (msg != null) {

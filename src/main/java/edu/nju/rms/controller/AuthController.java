@@ -35,7 +35,7 @@ public class AuthController {
 			if (username.equals("admin")) {
 				session.setAttribute("admin", true);
 			}
-			response.sendRedirect(request.getContextPath()+ "/home");
+			response.sendRedirect(request.getContextPath()+ "/project");
 		}else{
 			request.setAttribute("msg", "用户名或密码错误!");
 			request.getRequestDispatcher("/").forward(request, response);
