@@ -16,7 +16,7 @@
 		<ul class="nav navbar-nav">
 			<% 
 				if (request.getSession().getAttribute("uid") != null) {
-					out.print("<li><a href='#'>风险项目</a></li>");
+					out.print("<li><a href='" + path + "/home'>风险项目</a></li>");
 				}
 				if (request.getSession().getAttribute("admin") != null) {
 					out.print("<li><a href='" + path + "/user'>用户管理</a></li>");					

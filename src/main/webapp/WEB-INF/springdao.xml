@@ -31,6 +31,10 @@
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 
+	<bean id="projectService" class="edu.nju.rms.service.ProjectServiceImpl">
+		<property name="riskProjectDao" ref="riskProjectDao"></property>
+	</bean>
+	
 	<bean id="authController" class="edu.nju.rms.controller.AuthController">
 		<property name="userService" ref="userService"></property>
 	</bean>
@@ -41,5 +45,9 @@
 	
 	<bean id="userController" class="edu.nju.rms.controller.UserController">
 		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<bean id="projectController" class="edu.nju.rms.controller.ProjectController">
+		<property name="projectService" ref="projectService"></property>
 	</bean>
 </beans>
