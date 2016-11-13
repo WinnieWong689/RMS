@@ -15,7 +15,6 @@
 			<h1 class="pull-left">跟踪条目列表</h1>
 			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/new_track_item">添加跟踪条目</a>
 			<div class="clearfix">
-				<p>${creater}</p>
 				<p>${project.description}</p>
 			</div>
 		</div>
@@ -29,8 +28,18 @@
 				<label>影响程度:：</label><span>${riskItem.levelInfluence}</span>
 			</div>
 		</div>
-		<div>
-			
+		<div class="row>
+			<c:forEach items="${trackItems}" var="trackitem">
+				<div class="col-md-12">
+					<div class="col-md-3>
+						<p>${trackitem.title}</p>
+						<p>${trackitem.ctime}</p>
+					</div>
+					<div class="col-md-9>
+						${trackitem.description}
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </body>

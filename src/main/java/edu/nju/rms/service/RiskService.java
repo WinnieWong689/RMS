@@ -3,6 +3,7 @@ package edu.nju.rms.service;
 import java.util.List;
 
 import edu.nju.rms.model.RiskItem;
+import edu.nju.rms.model.TrackItem;
 
 public interface RiskService {
 
@@ -17,4 +18,6 @@ public interface RiskService {
 	public List<RiskItem> getRiskItemByProjectId(int projectId);
 	
 	public int addTrackItem(int itemId,String title,String description);
+	
+	public List<TrackItem> getTrackItemByRiskItemId(int riskId);
 }

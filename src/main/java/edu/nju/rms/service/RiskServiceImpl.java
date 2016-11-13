@@ -54,4 +54,9 @@ public class RiskServiceImpl implements RiskService {
 		return trackItemDao.addTrackItem(track);
 	}
 
+	@Override
+	public List<TrackItem> getTrackItemByRiskItemId(int riskId) {
+		return trackItemDao.getTrackItemsByRiskId(riskId);
+	}
+
 }
