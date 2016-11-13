@@ -40,10 +40,10 @@ public class RiskController {
 			model.put("project", project);
 			model.put("riskItem", riskItem);
 			model.put("trackItems", trackItems);
-			return "/risk/risk_track_list";
 		} else {
-			return "/project";
+			model.put("error", true);
 		}
+		return "/risk/risk_track_list";
 	}
 	
 	@Auth(Role.FOLLOWER)
