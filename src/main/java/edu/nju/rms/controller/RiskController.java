@@ -59,11 +59,10 @@ public class RiskController {
 	@RequestMapping(value="/risk/add_track_item", method=RequestMethod.POST)
 	public void addRiskItem(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws ServletException, IOException {
 		String title = request.getParameter("title");
-		String description = request.getParameter("nickname");
-		Integer role = Integer.parseInt(request.getParameter("role"));
+		String description = request.getParameter("description");
 		int result = -1;
 		if (title != null && description != null) {
-			result = userService.addUser(username, nickname, password, role);
+			//result = userService.addUser(username, nickname, password, role);
 		}
 		if (result == -1) {
 			request.getRequestDispatcher("/user/addmsg").forward(request, response);
