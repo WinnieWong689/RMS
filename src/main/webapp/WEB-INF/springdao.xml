@@ -24,7 +24,7 @@
 	</bean>
 	
 	<bean id="riskService" class="edu.nju.rms.service.RiskServiceImpl">
-		<property name="riskProjectDao" ref="riskProjectDao"></property>
+		<property name="riskItemDao" ref="riskItemDao"></property>
 	</bean>
 	
 	<bean id="authService" class="edu.nju.rms.service.AuthServiceImpl">
