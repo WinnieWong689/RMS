@@ -27,24 +27,7 @@ public class RiskController {
 		this.riskService = riskService;
 	}	
 	
-	@Auth(Role.USER)
-	@RequestMapping(value="/home")
-	public String getRiskProjectList(ModelMap model) {
-		List<RiskProject> projects = riskService.getAllRiskProject();
-		model.put("projects", projects);
-		return "/risk/project_list";
-	}
 
-	@Auth(Role.USER)
-	@RequestMapping(value="/risk/add", method=RequestMethod.GET)
-	public String addRiskProject(HttpServletRequest req) {
-//		TODO just for test
-//		Integer uid = (Integer) req.getSession().getAttribute("uid");
-//		if (uid != null) {
-//			riskService.addRiskProject("test", "This is a test project", uid);
-//		}
-		return "/risk/project_list";
-	}
 	
 	@Auth(Role.USER)
 	@RequestMapping(value="/risk/risk_track_list", method=RequestMethod.GET)
