@@ -19,6 +19,10 @@
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
 	
+	<bean id="trackItemDao" class="edu.nju.rms.dao.TrackItemDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
 	<bean id="userService" class="edu.nju.rms.service.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
