@@ -42,4 +42,33 @@ public class RiskController {
 //		}
 		return "/risk/project_list";
 	}
+	
+	@Auth(Role.USER)
+	@RequestMapping(value="/risk/risk_track_list", method=RequestMethod.GET)
+	public String add(HttpServletRequest request, ModelMap model) {
+		return "/risk/risk_track_list";
+	}
+	
+	@Auth(Role.FOLLOWER)
+	@RequestMapping(value="/risk/new_track_item", method=RequestMethod.GET)
+	public void addRiskItem(HttpServletRequest request,ModelMap model) {
+		return "/risk/add_track_item";
+	}
+	
+	@Auth(Role.FOLLOWER)
+	@RequestMapping(value="/risk/add_track_item", method=RequestMethod.POST)
+	public void addRiskItem(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws ServletException, IOException {
+		String title = request.getParameter("title");
+		String description = request.getParameter("nickname");
+		Integer role = Integer.parseInt(request.getParameter("role"));
+		int result = -1;
+		if (title != null && description != null) {
+			result = userService.addUser(username, nickname, password, role);
+		}
+		if (result == -1) {
+			request.getRequestDispatcher("/user/addmsg").forward(request, response);
+		} else {
+			response.sendRedirect(request.getContextPath() + "/risk_track_list");
+		}
+	}
 }
