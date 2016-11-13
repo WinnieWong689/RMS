@@ -15,4 +15,6 @@ public interface RiskService {
 	public RiskItem getRiskItemById(int id);
 
 	public List<RiskItem> getRiskItemByProjectId(int projectId);
+	
+	public int addTrackItem(int itemId,String title,String description);
 }

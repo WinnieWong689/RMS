@@ -1,12 +1,17 @@
 package edu.nju.rms.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="risk_project")
@@ -21,6 +26,8 @@ public class RiskProject {
 	private String description;
 	
 	private Date ctime;
+	
+	private Set<RiskItem> items;
 	
 	public RiskProject() {}
 
@@ -64,6 +71,16 @@ public class RiskProject {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@OneToMany
+	@LazyCollection(LazyCollectionOption.EXTRA)
+	public Set<RiskItem> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<RiskItem> items) {
+		this.items = items;
 	}	
 	
 }

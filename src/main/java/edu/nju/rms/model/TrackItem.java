@@ -2,6 +2,7 @@ package edu.nju.rms.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,8 @@ public class TrackItem {
 
 	private int id;
 	
-	private int item_id;
+	@Column(name="item_id")
+	private int itemId;
 	
 	private String title;
 	
@@ -32,14 +34,6 @@ public class TrackItem {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getItem_id() {
-		return item_id;
-	}
-
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
 	}
 
 	public String getTitle() {
@@ -64,6 +58,14 @@ public class TrackItem {
 
 	public void setCtime(Date ctime) {
 		this.ctime = ctime;
+	}
+
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 	
 	

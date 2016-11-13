@@ -24,6 +24,6 @@
 		<mapping class="edu.nju.rms.model.RiskProject" />
 		<mapping class="edu.nju.rms.model.RiskItem" />
 		<mapping class="edu.nju.rms.model.RiskTrigger" />
-		
+		<mapping class="edu.nju.rms.model.TrackItem">
     </session-factory>
 </hibernate-configuration>

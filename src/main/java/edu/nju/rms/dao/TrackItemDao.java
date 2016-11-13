@@ -1,5 +1,13 @@
 package edu.nju.rms.dao;
 
-public interface TrackItemDao {
+import java.util.List;
 
+import edu.nju.rms.model.TrackItem;
+
+public interface TrackItemDao {
+	
+	public int addTrackItem(TrackItem item);
+
+	public List<TrackItem> getTrackItemsByRiskId(int id);
+	
 }
