@@ -6,7 +6,7 @@ import edu.nju.rms.model.RiskProject;
 import java.util.Date;
 import java.util.List;
 
-public class ProjectServiceImpl implements RiskService {
+public class ProjectServiceImpl implements ProjectService {
 
 	private RiskProjectDao riskProjectDao;
 	
