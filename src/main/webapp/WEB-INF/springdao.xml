@@ -29,6 +29,7 @@
 	
 	<bean id="riskService" class="edu.nju.rms.service.RiskServiceImpl">
 		<property name="riskItemDao" ref="riskItemDao"></property>
+		<property name="trackItemDao" ref="trackItemDao"></property>
 	</bean>
 	
 	<bean id="authService" class="edu.nju.rms.service.AuthServiceImpl">

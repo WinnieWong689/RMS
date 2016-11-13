@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,7 +27,7 @@ public class RiskItem {
 	
 	private String content;
 	
-	private int uploader;
+	private User uploader;
 	
 	private String latestCondition;
 	
@@ -43,10 +41,12 @@ public class RiskItem {
 	
 	private Set<RiskTrigger> triggers;
 	
-	private Set<User> followers;
+	private Set<TrackItem> trackItems;
+	
+	private User follower;
 	
 	public RiskItem() {}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
@@ -71,14 +71,6 @@ public class RiskItem {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public int getUploader() {
-		return uploader;
-	}
-
-	public void setUploader(int uploader) {
-		this.uploader = uploader;
 	}
 
 	@Column(name="latest_condition")
@@ -116,7 +108,7 @@ public class RiskItem {
 		this.ctime = ctime;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="item")
 	@LazyCollection(LazyCollectionOption.EXTRA)
 	public Set<RiskTrigger> getTriggers() {
 		return triggers;
@@ -126,20 +118,28 @@ public class RiskItem {
 		this.triggers = triggers;
 	}
 
-	@ManyToMany
-	@JoinTable(
-			name="risk_follower", 
-			joinColumns={@JoinColumn(name="item_id")},
-			inverseJoinColumns= {@JoinColumn(name="user_id")})
-	public Set<User> getFollowers() {
-		return followers;
+	@ManyToOne
+	@JoinColumn(name="follwer_id")
+	public User getFollower() {
+		return follower;
 	}
 
-	public void setFollowers(Set<User> followers) {
-		this.followers = followers;
+	public void setFollower(User follower) {
+		this.follower= follower;
 	}
 
+	@ManyToOne
+	@JoinColumn(name="uploader")
+	public User getUploader() {
+		return uploader;
+	}
+
+	public void setUploader(User uploader) {
+		this.uploader = uploader;
+	}
+	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="project_id")
 	public RiskProject getProject() {
 		return project;
 	}
@@ -147,5 +147,17 @@ public class RiskItem {
 	public void setProject(RiskProject project) {
 		this.project = project;
 	}
+
+	@OneToMany(mappedBy="item")
+	@LazyCollection(LazyCollectionOption.EXTRA)
+	public Set<TrackItem> getTrackItems() {
+		return trackItems;
+	}
+
+	public void setTrackItems(Set<TrackItem> trackItems) {
+		this.trackItems = trackItems;
+	}
+	
+	
 	
 }

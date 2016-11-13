@@ -18,6 +18,10 @@ public class RiskServiceImpl implements RiskService {
 		this.riskItemDao = riskItemDao;
 	}
 
+	public void setTrackItemDao(TrackItemDao trackItemDao) {
+		this.trackItemDao = trackItemDao;
+	}
+	
     public boolean addRiskItem(RiskItem item) {
         return riskItemDao.addRiskItem(item);
     }
@@ -36,21 +40,22 @@ public class RiskServiceImpl implements RiskService {
 
 
     public RiskItem getRiskItemById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.riskItemDao.getRiskItemById(id);
     }
+    
     public List<RiskItem> getRiskItemByProjectId(int projectId) {
-        // TODO Auto-generated method stub
-        return null;
+        return riskItemDao.getRiskItemByProjectId(projectId);
     }
 	
 	@Override
 	public int addTrackItem(int itemId, String title, String description){
 		TrackItem track = new TrackItem();
-		track.setItemId(itemId);
+		RiskItem item = riskItemDao.getRiskItemById(itemId);
+		track.setItem(item);
 		track.setTitle(title);
 		track.setDescription(description);
 		track.setCtime(new Date());
+		System.out.println(item);
 		return trackItemDao.addTrackItem(track);
 	}
 

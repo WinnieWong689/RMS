@@ -2,6 +2,8 @@ package edu.nju.rms.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+
 import edu.nju.rms.model.RiskItem;
 
 public class RiskItemDaoImpl implements RiskItemDao {
@@ -31,14 +33,21 @@ public class RiskItemDaoImpl implements RiskItemDao {
 
 	@Override
 	public RiskItem getRiskItemById(int id) {
-		// TODO Auto-generated method stub
+		String hql = "from RiskItem where id=" + id;
+		Query query = baseDao.getSession().createQuery(hql);
+		List<RiskItem> list = query.list();
+		if(!list.isEmpty()) {
+			return list.get(0);
+		}
 		return null;
 	}
 
 	@Override
 	public List<RiskItem> getRiskItemByProjectId(int projectId) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from RiskItem where project_id=" + projectId;
+		Query query = baseDao.getSession().createQuery(hql);
+		List<RiskItem> list = query.list();
+		return list;
 	}
 
 }

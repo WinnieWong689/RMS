@@ -40,7 +40,7 @@ public class ProjectController {
 	public String getRiskProjectList(ModelMap model) {
 		List<RiskProject> projects = projectService.getAllRiskProject();
 		model.put("projects", projects);
-		return "/risk/project_list";
+		return "/project/project_list";
 	}
 	
 	@Auth(Role.USER)

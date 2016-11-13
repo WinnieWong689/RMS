@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,6 +40,7 @@ public class RiskTrigger {
 	}
 
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="item_id")
 	public RiskItem getItem() {
 		return item;
 	}

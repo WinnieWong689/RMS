@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +67,7 @@
 				<span class="col-md-1">影响程度</span>
 			</div>
 		</div>
-		<table class="table table-bordered">
+		<table class="table table-bordered table-hover">
 			<thead>
 	          <tr>
 	            <th><input type="checkbox" value="0" id="checkbox-all"/></th>
@@ -80,30 +81,34 @@
 	          </tr>
 	        </thead>
 	        <tbody>
-				<c:forEach items="${risks}" var="user">
+				<c:forEach items="${risks}" var="risk">
 					<tr>
 						<td><input type="checkbox" value="${risk.id}" name="user-selector"/></td>
-			  			<td>${risk.content}</td>
-			  			<td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">${risk.content}</td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">
 			  				<c:choose>
-								<c:when test="${user.possibility==1}">高</c:when>
-								<c:when test="${user.possibility==2}">中</c:when>
-								<c:when test="${user.possibility==2}">低</c:when>
+								<c:when test="${risk.levelChance==1}">高</c:when>
+								<c:when test="${risk.levelChance==2}">中</c:when>
+								<c:when test="${risk.levelChance==2}">低</c:when>
 								<c:otherwise>脏数据</c:otherwise>
 							</c:choose>
 						</td>
-						<td>
+						<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">
 			  				<c:choose>
-								<c:when test="${user.influence==1}">高</c:when>
-								<c:when test="${user.influence==2}">中</c:when>
-								<c:when test="${user.influence==2}">低</c:when>
+								<c:when test="${risk.levelInfluence==1}">高</c:when>
+								<c:when test="${risk.levelInfluence==2}">中</c:when>
+								<c:when test="${risk.levelInfluence==2}">低</c:when>
 								<c:otherwise>脏数据</c:otherwise>
 							</c:choose>
 						</td>
-			  			<td>${risk.trigger}</td>
-			  			<td>${risk.submitter}</td>
-			  			<td>${risk.follower}</td>
-			  			<td>${risk.number}</td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">
+			  				<c:forEach items="${risk.triggers}" var="trigger">
+			  					<p>${trigger.content}</p>
+			  				</c:forEach>
+			  			</td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">${risk.uploader.nickname}</td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">${risk.follower.nickname}</td>
+			  			<td onclick="location.href='/rms/risk/risk_track_list/${risk.id}';">${fn:length(risk.trackItems)}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

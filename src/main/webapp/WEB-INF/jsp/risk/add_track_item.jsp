@@ -15,14 +15,17 @@
 		<div class="row">
 			<form class="col-md-6" id="add-form" action="<c:url value="/risk/add_track_item"/>" method="POST">
 				<div class="form-group">
+		    		<input type="hidden" class="form-control" name="itemId" value="${itemId}">
+		  		</div>
+				<div class="form-group">
 		    		<label for="input-title">标题</label>
 		    		<input type="text" class="form-control" name="title" id="input-title" required>
 		  		</div>
 		  		<div class="form-group">
-		    		<label for="input-description">姓名</label>
-		    		<input type="text" class="form-control" name="discription" id="input-discription" required>
+		    		<label for="input-description">内容</label>
+		    		<input type="text" class="form-control" name="description" id="input-description" required>
 		  		</div>
-		  		<a href="/risk/risk_track_list"><button type="button" class="btn btn-default">返回</button></a>
+		  		<a href="<%=path %>/risk/risk_track_list/${itemId}"><button type="button" class="btn btn-default">返回</button></a>
 		  		<button type="submit" class="btn btn-primary" id="js-add-risk-item">添加</button>
 			</form>
 		</div>
@@ -34,7 +37,7 @@
 $(document).ready(function() {
 	$('#js-add-risk-item').click(function() {
 		var title = $("#input-title").val().trim();
-		var dscrpt = $("#input-discription").val().trim();
+		var dscrpt = $("#input-description").val().trim();
 		if (title == '' || title == null) {
 			alert("请输入标题");
 		}

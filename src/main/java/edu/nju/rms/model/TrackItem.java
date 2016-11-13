@@ -2,11 +2,12 @@ package edu.nju.rms.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +16,7 @@ public class TrackItem {
 
 	private int id;
 	
-	@Column(name="item_id")
-	private int itemId;
+	private RiskItem item;
 	
 	private String title;
 	
@@ -60,12 +60,14 @@ public class TrackItem {
 		this.ctime = ctime;
 	}
 
-	public int getItemId() {
-		return itemId;
+	@ManyToOne
+	@JoinColumn(name="item_id")
+	public RiskItem getItem() {
+		return item;
 	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	
+	public void setItem(RiskItem item) {
+		this.item = item;
 	}
 	
 	

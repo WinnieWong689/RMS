@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.nju.rms.interceptor.Auth;
 import edu.nju.rms.interceptor.Role;
 import edu.nju.rms.model.RiskItem;
-import edu.nju.rms.model.RiskProject;
-import edu.nju.rms.model.TrackItem;
 import edu.nju.rms.service.RiskService;
 
 @Controller
-@RequestMapping(value="")
+@RequestMapping(value="/risk")
 public class RiskController {
 	
 	private RiskService riskService;
@@ -29,17 +27,23 @@ public class RiskController {
 	public void setRiskService(RiskService riskService) {
 		this.riskService = riskService;
 	}
-
+	
 	@Auth(Role.USER)
-	@RequestMapping(value="/risk/risk_track_list/{itemId}", method=RequestMethod.GET)
+	@RequestMapping(value="/risk_list/{projectId}", method=RequestMethod.GET)
+	public String riskList(HttpServletRequest request, ModelMap model, @PathVariable int projectId) {
+		List<RiskItem> riskItems = riskService.getRiskItemByProjectId(projectId);
+		model.put("risks", riskItems);
+		return "/risk/risk_list";
+	}
+	
+	@Auth(Role.USER)
+	@RequestMapping(value="/risk_track_list/{itemId}", method=RequestMethod.GET)
 	public String show(HttpServletRequest request, ModelMap model, @PathVariable int itemId) {
 		RiskItem riskItem = riskService.getRiskItemById(itemId);
 		if (riskItem != null) {
-			RiskProject project = riskItem.getProject();
-			List<TrackItem> trackItems = riskService.getTrackItemByRiskItemId(itemId);
-			model.put("project", project);
+			model.put("project", riskItem.getProject());
 			model.put("riskItem", riskItem);
-			model.put("trackItems", trackItems);
+			model.put("trackItems", riskItem.getTrackItems());
 		} else {
 			model.put("error", true);
 		}
@@ -47,24 +51,26 @@ public class RiskController {
 	}
 	
 	@Auth(Role.FOLLOWER)
-	@RequestMapping(value="/risk/add_track_item", method=RequestMethod.GET)
-	public String addTrackItem(HttpServletRequest request,ModelMap model) {
+	@RequestMapping(value="/add_track_item/{itemId}", method=RequestMethod.GET)
+	public String addTrackItem(HttpServletRequest request,ModelMap model, @PathVariable int itemId) {
+		model.put("itemId", itemId);
 		return "/risk/add_track_item";
 	}
 	
 	@Auth(Role.FOLLOWER)
-	@RequestMapping(value="/risk/add_track_item", method=RequestMethod.POST)
+	@RequestMapping(value="/add_track_item", method=RequestMethod.POST)
 	public void addRiskItem(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws ServletException, IOException {
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		int result = -1;
 		if (title != null && description != null) {
-			//result = userService.addUser(username, nickname, password, role);
+			result = riskService.addTrackItem(itemId, title, description);
 		}
 		if (result == -1) {
 			request.getRequestDispatcher("/user/addmsg").forward(request, response);
 		} else {
-			response.sendRedirect(request.getContextPath() + "/risk_track_list");
+			response.sendRedirect(request.getContextPath() + "/risk/risk_track_list/" + itemId);
 		}
 	}
 }
