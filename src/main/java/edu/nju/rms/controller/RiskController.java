@@ -21,14 +21,12 @@ import edu.nju.rms.service.RiskService;
 @RequestMapping(value="")
 public class RiskController {
 	
-	private RiskService riskService;
-	
-	public void setRiskService(RiskService riskService) {
-		this.riskService = riskService;
-	}	
-	
+//	private RiskService riskService;
+//
+//	public void setRiskService(RiskService riskService) {
+//		this.riskService = riskService;
+//	}
 
-	
 	@Auth(Role.USER)
 	@RequestMapping(value="/risk/risk_track_list", method=RequestMethod.GET)
 	public String add(HttpServletRequest request, ModelMap model) {
