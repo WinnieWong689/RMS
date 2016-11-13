@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% String path = request.getContextPath(); %>
+<% String path = request.getContextPath();%>
 <% int num = 0; %>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,11 @@
 <body>
 	<jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include>
 	<div class="container">
+
+		<c:if test="${role == 1}">
+			<button href="<%=path%>/project/get" class="btn btn-sm btn-primary pull-left">添加风险项目</button>
+		</c:if>
+
 		<table class="table table-striped">
 			<thead>
 	          <tr>

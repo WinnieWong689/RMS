@@ -98,4 +98,11 @@ public class UserDaoImpl implements UserDao {
 		List<User> list = query.list();
 		return list;
 	}
+
+	public int getRole(int uid) {
+		String hql = "from User where id=" + uid;
+		Query query = baseDao.getSession().createQuery(hql);
+		List<User> list = query.list();
+		return list.get(0).getRole();
+	}
 }

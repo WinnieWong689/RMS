@@ -24,4 +24,5 @@ public interface UserDao {
 
 	public List<User> search(String username, String nickname, Integer role);
 
+	public int getRole(int uid);
 }

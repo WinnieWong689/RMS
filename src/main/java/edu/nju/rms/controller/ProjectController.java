@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import edu.nju.rms.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,14 @@ public class ProjectController {
 
 	private ProjectService projectService;
 
+	private UserService userService;
+
 	public void setProjectService(ProjectService projectService) {
 		this.projectService = projectService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 	@Auth(Role.USER)
@@ -38,7 +45,10 @@ public class ProjectController {
 	
 	@Auth(Role.USER)
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addProject(HttpServletRequest request) {
+	public String addProject(ModelMap model, HttpServletRequest request) {
+		Integer uid =  (Integer) request.getSession().getAttribute("uid");
+		int role = userService.getRole(uid);
+		model.put("role", role);
 		return "/project/new_project";
 	}
 
@@ -51,5 +61,5 @@ public class ProjectController {
 		map.put("result", result?1:0);
 		return map;
 	}
-	
+
 }

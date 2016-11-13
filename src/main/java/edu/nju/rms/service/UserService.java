@@ -21,5 +21,7 @@ public interface UserService {
 	public boolean isExist(String username);
 
 	public List<User> search(String username, String nickname, int role);
+
+	public int getRole(int id);
 	
 }
