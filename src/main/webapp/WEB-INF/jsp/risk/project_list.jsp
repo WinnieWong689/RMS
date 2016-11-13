@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include>
 	<div class="container">
-		<a><%=path%>/</a>
+		<a><%=role%>/</a>
 		<c:if test="${role == 1}">
 			<button href="<%=path%>/project/get" class="btn btn-sm btn-primary pull-left">添加风险项目</button>
 		</c:if>
