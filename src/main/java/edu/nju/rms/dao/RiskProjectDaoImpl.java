@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import edu.nju.rms.model.RiskProject;
+import edu.nju.rms.model.User;
+import org.hibernate.Query;
 
 public class RiskProjectDaoImpl implements RiskProjectDao {
 
@@ -15,7 +17,10 @@ public class RiskProjectDaoImpl implements RiskProjectDao {
 	}
 	
 	public List<RiskProject> getAllRiskProject() {
-		return baseDao.getAllList(RiskProject.class);
+		String hql = "from RiskProject";
+		Query query = baseDao.getSession().createQuery(hql);
+		List<RiskProject> list = query.list();
+		return list;
 	}
 
 	@Transactional
