@@ -34,7 +34,7 @@ $(document).ready(function() {
 	});
 	
 	$('#btn-search').click(function() {
-		
+		$('#search-form').submit();
 	});
 	
 	function updateDeleteBtnStatus() {

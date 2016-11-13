@@ -82,6 +82,15 @@ public class UserController {
 		return map;
 	}
 	
+	@Auth(Role.ADMIN)
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public String search(HttpServletRequest request, @RequestParam String username, @RequestParam String nickname, 
+			@RequestParam int role, ModelMap model) {
+		List<User> users = userService.search(username, nickname, role);
+		model.addAttribute("users", users);
+		model.addAttribute("total", users.size());
+		return "/user/user_list";
+	}
 	
 	@RequestMapping(value="/addmsg")
 	public String addFailed(HttpServletRequest request, HttpServletResponse response, ModelMap model) {

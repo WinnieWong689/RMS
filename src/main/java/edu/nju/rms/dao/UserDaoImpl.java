@@ -81,4 +81,21 @@ public class UserDaoImpl implements UserDao {
 		List<User> list = query.list();
 		return !list.isEmpty();
 	}
+
+	@Override
+	public List<User> search(String username, String nickname, Integer role) {
+		if (username == null ) {
+			username = "";
+		}
+		if (nickname == null ) {
+			nickname = "";
+		}
+		String hql = "from User where username <> 'admin' and username like '%" + username + "%' and nickname like '%" + nickname + "%' ";
+		if (role > 0 ) {
+			hql += " and role=" + role;
+		}
+		Query query = baseDao.getSession().createQuery(hql);
+		List<User> list = query.list();
+		return list;
+	}
 }

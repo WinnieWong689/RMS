@@ -19,5 +19,7 @@ public interface UserService {
 	public boolean deleteUsers(String ids);
 	
 	public boolean isExist(String username);
+
+	public List<User> search(String username, String nickname, int role);
 	
 }

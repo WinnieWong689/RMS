@@ -59,4 +59,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.isExist(username);
 	}
 
+	@Override
+	public List<User> search(String username, String nickname, int role) {
+		return userDao.search(username, nickname, role);
+	}
+
 }

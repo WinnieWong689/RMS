@@ -22,4 +22,6 @@ public interface UserDao {
 	
 	public boolean isExist(String username);
 
+	public List<User> search(String username, String nickname, Integer role);
+
 }

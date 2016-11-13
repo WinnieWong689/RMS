@@ -16,18 +16,19 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="row show-grid">
-			<form class="m-user-search-form form-inline col-md-8" role="form">
+			<form class="m-user-search-form form-inline col-md-8" role="form" id="search-form"
+			action="<c:url value="/user/search"/>" method="POST">
 				<div class="form-group">
 					<label for="input-username">账号</label>
-	    			<input type="text" class="form-control" id="input-username">
+	    			<input type="text" class="form-control" id="input-username" name="username">
 				</div>
 				<div class="form-group">
 					<label for="input-nickname">姓名</label>
-	    			<input type="text" class="form-control" id="input-nickname">
+	    			<input type="text" class="form-control" id="input-nickname" name="nickname">
 				</div>
 				<div class="form-group">
 					<label for="select-role">角色</label>
-					<select class="form-control" id="select-role">
+					<select class="form-control" id="select-role" name="role">
 						<option value="-1">全部</option>
 						<option value="1">负责人</option>
 						<option value="2">组员</option>
@@ -35,7 +36,7 @@
 				</div>
 			</form>
 			<div class="col-md-1">
-				<button class="btn btn-default col-md-12" id="btn-search">搜索</button>
+				<button type="submit" class="btn btn-default col-md-12" id="btn-search">搜索</button>
 			</div>
 		</div>
 		<div class="row show-grid">
