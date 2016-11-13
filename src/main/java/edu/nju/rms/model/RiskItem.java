@@ -5,12 +5,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,6 +38,8 @@ public class RiskItem {
 	private int levelChance;
 	
 	private Date ctime;
+	
+	private RiskProject project;
 	
 	private Set<RiskTrigger> triggers;
 	
@@ -134,7 +138,14 @@ public class RiskItem {
 	public void setFollowers(Set<User> followers) {
 		this.followers = followers;
 	}
-	
-	
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	public RiskProject getProject() {
+		return project;
+	}
+
+	public void setProject(RiskProject project) {
+		this.project = project;
+	}
 	
 }

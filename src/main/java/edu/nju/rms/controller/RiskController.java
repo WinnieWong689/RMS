@@ -28,6 +28,7 @@ public class RiskController {
 	@Auth(Role.USER)
 	@RequestMapping(value="/risk/risk_track_list", method=RequestMethod.GET)
 	public String add(HttpServletRequest request, ModelMap model) {
+		
 		return "/risk/risk_track_list";
 	}
 	

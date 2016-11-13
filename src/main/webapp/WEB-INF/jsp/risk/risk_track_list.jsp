@@ -14,9 +14,24 @@
 		<div class="page-header">
 			<h1 class="pull-left">跟踪条目列表</h1>
 			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/new_track_item">添加跟踪条目</a>
-			<div class="clearfix"></div>
+			<div class="clearfix">
+				<p>${creater}</p>
+				<p>${project.description}</p>
+			</div>
 		</div>
-		
+		<div class="row">
+			<div class="col-md-1">${riskItem.creater}</div>
+			<div class="col-md-11">
+				${riskItem.description}
+			</div>
+			<div class="col-md-12">
+				<label>可能性：</label><span>${riskItem.levelChance}</span>
+				<label>影响程度:：</label><span>${riskItem.levelInfluence}</span>
+			</div>
+		</div>
+		<div>
+			
+		</div>
 	</div>
 </body>
 
