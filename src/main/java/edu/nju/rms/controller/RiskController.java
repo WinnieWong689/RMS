@@ -1,6 +1,8 @@
 package edu.nju.rms.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.nju.rms.interceptor.Auth;
 import edu.nju.rms.interceptor.Role;
 import edu.nju.rms.model.RiskItem;
+import edu.nju.rms.model.TrackItem;
 import edu.nju.rms.service.RiskService;
 
 @Controller
@@ -40,10 +43,17 @@ public class RiskController {
 	@RequestMapping(value="/risk_track_list/{itemId}", method=RequestMethod.GET)
 	public String show(HttpServletRequest request, ModelMap model, @PathVariable int itemId) {
 		RiskItem riskItem = riskService.getRiskItemById(itemId);
+		Integer uid = (Integer) request.getSession().getAttribute("uid");
 		if (riskItem != null) {
+			List<TrackItem> trackItems = new ArrayList<TrackItem>(riskItem.getTrackItems());
+			trackItems.sort(new TrackItemComparator());
+			if (uid== riskItem.getFollower().getId()) {
+				model.put("follower", true);
+			}
 			model.put("project", riskItem.getProject());
 			model.put("riskItem", riskItem);
-			model.put("trackItems", riskItem.getTrackItems());
+			model.put("trackItems", trackItems);
+			model.put("trackCount", riskItem.getTrackItems().size());
 		} else {
 			model.put("error", true);
 		}
@@ -73,4 +83,14 @@ public class RiskController {
 			response.sendRedirect(request.getContextPath() + "/risk/risk_track_list/" + itemId);
 		}
 	}
+	
+	public class TrackItemComparator implements Comparator<TrackItem> {
+
+		@Override
+		public int compare(TrackItem o1, TrackItem o2) {
+			TrackItem t1 = (TrackItem) o1;
+			TrackItem t2 = (TrackItem) o2;
+			return t2.getCtime().compareTo(t1.getCtime());
+		}
+		}
 }

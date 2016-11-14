@@ -2,6 +2,16 @@
 	cursor: pointer;
 }
 
+.item-bordered {
+	border: 1px solid #eee;
+	margin-bottom: 15px;
+}
+
+.level-label {
+	margin-right: 15px;
+}
+
+
 .page-header {
 	margin-top: 0;
 }

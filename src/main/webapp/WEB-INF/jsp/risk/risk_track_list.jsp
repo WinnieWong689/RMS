@@ -20,26 +20,54 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-1">${riskItem.uploader.nickname}</div>
-			<div class="col-md-11">
-				${riskItem.content}
+			<div class="col-md-12">
+				<div class="item-bordered">
+					<div class="col-md-1">${riskItem.uploader.nickname}</div>
+					<div class="col-md-11">
+						${riskItem.content}
+					</div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
 			<div class="col-md-12">
-				<span><label>可能性：</label>${riskItem.levelChance}</span>
-				<span><label>影响程度:：</label>${riskItem.levelInfluence}</span>
-				<span>由<label>${riskItem.follower.nickname}</label>跟踪</span>
+					<span style="margin-left: 15px">可能性：
+						<c:choose>
+							<c:when test="${riskItem.levelChance==1}">
+								<label class="level-label text-danger">高</c:when>
+							<c:when test="${riskItem.levelChance==2}">
+								<label class="level-label text-warning">中</c:when>
+							<c:when test="${riskItem.levelChance==2}">
+								<label class="level-label text-success">低</c:when>
+							<c:otherwise>脏数据</c:otherwise>
+						</c:choose></label>
+					</span>
+					<span>影响程度:：
+						<c:choose>
+							<c:when test="${riskItem.levelInfluence==1}">
+								<label class="level-label text-danger">高</c:when>
+							<c:when test="${riskItem.levelInfluence==2}">
+								<label class="level-label text-warning">中</c:when>
+							<c:when test="${riskItem.levelInfluence==2}">
+								<label class="level-label text-success">低</c:when>
+							<c:otherwise>脏数据</c:otherwise>
+						</c:choose></label>
+					<span style="display:inline-block;" class="pull-right">由<label>${riskItem.follower.nickname}</label>跟踪</span>
+				
 			</div>
 			<div class="col-md-12">
-				<c:forEach items="${riskItem.triggers}" var="trigger">
-					<p>${trigger.content}</p>
-				</c:forEach>
+				<div class="col-md-1">触发器 </div>
+				<ul class="col-md-11">
+					<c:forEach items="${riskItem.triggers}" var="trigger">
+						<li>${trigger.content}</li>
+					</c:forEach> 
+				</ul>
 			</div>
 		</div>
 		
 		<table class="table table-bordered">
 			<thead>
 	          <tr>
-	            <th colspan="2">共2个追踪项</th>
+	            <th colspan="2">共有${trackCount}个条目</th>
 	          </tr>
 	        </thead>
 	        <tbody>
