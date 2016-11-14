@@ -12,9 +12,11 @@
 	<jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include>
 	<div class="container">
 		<div class="page-header">
-			<h1 class="pull-left">${projectName} - 风险条目</h1>
-			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/edit">编辑</a>
-			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/add">添加风险条目</a>
+			<h1 class="pull-left">${project.name} - 风险条目</h1>
+			<c:if test="${uploader}">
+				<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/edit">编辑</a>
+				<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/add">添加风险条目</a>
+			</c:if>
 			<div class="clearfix"></div>
 		</div>
 		<div class="row show-grid">

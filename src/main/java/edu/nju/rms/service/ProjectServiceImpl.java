@@ -1,10 +1,10 @@
 package edu.nju.rms.service;
 
-import edu.nju.rms.dao.RiskProjectDao;
-import edu.nju.rms.model.RiskProject;
-
 import java.util.Date;
 import java.util.List;
+
+import edu.nju.rms.dao.RiskProjectDao;
+import edu.nju.rms.model.RiskProject;
 
 public class ProjectServiceImpl implements ProjectService {
 
@@ -25,6 +25,11 @@ public class ProjectServiceImpl implements ProjectService {
 		rp.setCreater(createrId);
 		rp.setCtime(new Date());
 		return riskProjectDao.addRiskProject(rp);
+	}
+
+	@Override
+	public RiskProject getProjectById(int projectId) {
+		return riskProjectDao.getProjectById(projectId);
 	}
 
 }

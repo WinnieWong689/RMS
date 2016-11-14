@@ -9,5 +9,7 @@ public interface ProjectService {
 	public boolean addRiskProject(String name, String desc, int createrId);
 	
 	public List<RiskProject> getAllRiskProject();
+
+	public RiskProject getProjectById(int projectId);
 	
 }

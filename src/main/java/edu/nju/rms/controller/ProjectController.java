@@ -37,8 +37,11 @@ public class ProjectController {
 
 	@Auth(Role.USER)
 	@RequestMapping(value="")
-	public String getRiskProjectList(ModelMap model) {
+	public String getRiskProjectList(ModelMap model, HttpServletRequest request) {
 		List<RiskProject> projects = projectService.getAllRiskProject();
+		Integer uid =  (Integer) request.getSession().getAttribute("uid");
+		Integer role = userService.getRole(uid);
+		model.put("role", role);
 		model.put("projects", projects);
 		return "/project/project_list";
 	}

@@ -1,7 +1,6 @@
 package edu.nju.rms.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.nju.rms.interceptor.Auth;
 import edu.nju.rms.interceptor.Role;
 import edu.nju.rms.model.RiskItem;
+import edu.nju.rms.model.RiskProject;
 import edu.nju.rms.model.TrackItem;
+import edu.nju.rms.service.ProjectService;
 import edu.nju.rms.service.RiskService;
 
 @Controller
@@ -26,16 +27,28 @@ import edu.nju.rms.service.RiskService;
 public class RiskController {
 	
 	private RiskService riskService;
+	
+	private ProjectService projectService;
 
 	public void setRiskService(RiskService riskService) {
 		this.riskService = riskService;
 	}
 	
+	public void setProjectService(ProjectService projectService) {
+		this.projectService = projectService;
+	}
+	
 	@Auth(Role.USER)
 	@RequestMapping(value="/risk_list/{projectId}", method=RequestMethod.GET)
 	public String riskList(HttpServletRequest request, ModelMap model, @PathVariable int projectId) {
+		Integer uid = (Integer) request.getSession().getAttribute("uid");
+		RiskProject project = projectService.getProjectById(projectId);
 		List<RiskItem> riskItems = riskService.getRiskItemByProjectId(projectId);
+		if (project.getCreater() == uid){
+			model.put("uploader", true);
+		}
 		model.put("risks", riskItems);
+		model.put("project", project);
 		return "/risk/risk_list";
 	}
 	

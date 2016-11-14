@@ -9,5 +9,7 @@ public interface RiskProjectDao {
 	public boolean addRiskProject(RiskProject project);
 
 	public List<RiskProject> getAllRiskProject();
+
+	public RiskProject getProjectById(int projectId);
 	
 }

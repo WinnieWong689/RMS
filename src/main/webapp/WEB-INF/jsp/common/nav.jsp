@@ -25,6 +25,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
       		<% if (request.getSession().getAttribute("uid") != null) {
+      				out.print("<li><a href=''>你好，" + request.getSession().getAttribute("nickname") + "</a></li>");
 					out.print("<li><a href='" + path + "/logout'>注销</a></li>");					
 				}
       		%>

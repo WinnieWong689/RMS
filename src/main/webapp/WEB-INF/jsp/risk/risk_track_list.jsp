@@ -13,7 +13,10 @@
 	<div class="container">
 		<div class="page-header">
 			<h1 class="pull-left">跟踪条目列表</h1>
-			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/add_track_item/${riskItem.id}">添加跟踪条目</a>
+			<c:if test="${follower}">
+				<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/add_track_item/${riskItem.id}">添加跟踪条目</a>
+			</c:if>
+			<a class="btn btn-default pull-left" href="<%=request.getContextPath()%>/risk/risk_list/${riskItem.id}">返回</a>
 			<div class="clearfix"></div>
 			<div>
 				<p>${project.description}</p>

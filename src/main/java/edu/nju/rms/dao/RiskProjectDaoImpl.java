@@ -29,4 +29,14 @@ public class RiskProjectDaoImpl implements RiskProjectDao {
 		return  baseDao.save(project);
 	}
 
+	@Override
+	public RiskProject getProjectById(int projectId) {
+		String hql = "from RiskProject where id=" + projectId;
+		Query query = baseDao.getSession().createQuery(hql);
+		List<RiskProject> list = query.list();
+		if(list.isEmpty())
+			return null;
+		return list.get(0);
+	}
+
 }

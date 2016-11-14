@@ -2,7 +2,6 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% String path = request.getContextPath();%>
-<% int num = 0; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +11,10 @@
 <body>
 	<jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include>
 	<div class="container">
-		<c:if test="${role}">
-			<button href="<%=path%>/project/get" class="btn btn-sm btn-primary pull-left">添加风险项目</button>
-		</c:if>
 		<div class="page-header">
 			<h1 class="pull-left">项目管理</h1>
-			<c:if test="${role}">
-				<a href="<%=path%>/project/get" class="btn btn-sm btn-primary pull-left">添加风险项目</a>
+			<c:if test="${role != 2}">
+				<a href="<%=path%>/project/add" class="btn btn-sm btn-primary pull-left">添加风险项目</a>
 			</c:if>
 			<div class="clearfix"></div>
 		</div>

@@ -32,6 +32,7 @@ public class AuthController {
 		if( user != null){
 			HttpSession session = (HttpSession) request.getSession();
 			session.setAttribute("uid", user.getId());
+			session.setAttribute("nickname", user.getNickname());
 			if (username.equals("admin")) {
 				session.setAttribute("admin", true);
 			}

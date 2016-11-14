@@ -46,6 +46,7 @@
 
 	<bean id="riskController" class="edu.nju.rms.controller.RiskController">
 		<property name="riskService" ref="riskService"></property>
+		<property name="projectService" ref="projectService"></property>
 	</bean>
 	
 	<bean id="userController" class="edu.nju.rms.controller.UserController">
@@ -54,5 +55,6 @@
 	
 	<bean id="projectController" class="edu.nju.rms.controller.ProjectController">
 		<property name="projectService" ref="projectService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 </beans>

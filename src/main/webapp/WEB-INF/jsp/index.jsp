@@ -10,6 +10,10 @@
 <body>
 	<jsp:include page="/WEB-INF/jsp/common/nav.jsp"></jsp:include>
 	<div class="container">
+		<div class="alert alert-info pull-right">新用户请联系管理员申请账号^_^</div>
+		<div class="row">
+			<h2 class="col-md-offset-4">欢迎使用，请先登录</h2>
+		</div>
 		<div class="row">
 			<div class="alert alert-danger col-md-4 col-md-offset-4" id="js-error-msg" role="alert" style="display:none">${msg}</div>
 		</div>
