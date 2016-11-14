@@ -26,7 +26,7 @@ public class TrackItemDaoImpl implements TrackItemDao {
 
 	@Override
 	public List<TrackItem> getTrackItemsByRiskId(int id) {
-		String hql = "from TrackItem where item_id = " + id;
+		String hql = "from TrackItem where item_id = " + id + " order by ctime desc";
 		Query query = baseDao.getSession().createQuery(hql);
 		List<TrackItem> list = query.list();
 		return list;

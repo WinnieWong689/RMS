@@ -45,8 +45,7 @@ public class RiskController {
 		RiskItem riskItem = riskService.getRiskItemById(itemId);
 		Integer uid = (Integer) request.getSession().getAttribute("uid");
 		if (riskItem != null) {
-			List<TrackItem> trackItems = new ArrayList<TrackItem>(riskItem.getTrackItems());
-			trackItems.sort(new TrackItemComparator());
+			List<TrackItem> trackItems = riskService.getTrackItemByRiskItemId(itemId);
 			if (uid== riskItem.getFollower().getId()) {
 				model.put("follower", true);
 			}
@@ -92,5 +91,5 @@ public class RiskController {
 			TrackItem t2 = (TrackItem) o2;
 			return t2.getCtime().compareTo(t1.getCtime());
 		}
-		}
+	}
 }
