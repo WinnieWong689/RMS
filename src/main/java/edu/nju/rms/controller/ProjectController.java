@@ -1,14 +1,16 @@
 package edu.nju.rms.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import edu.nju.rms.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import edu.nju.rms.interceptor.Auth;
 import edu.nju.rms.interceptor.Role;
 import edu.nju.rms.model.RiskProject;
 import edu.nju.rms.service.ProjectService;
+import edu.nju.rms.service.UserService;
 
 @Controller
 @RequestMapping(value="/project")
@@ -65,4 +68,20 @@ public class ProjectController {
 		return map;
 	}
 
+	@Auth(Role.USER)
+	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
+	public String getEditProject(ModelMap model, @PathVariable int id) {
+		RiskProject project = projectService.getProjectById(id);
+		model.put("project", project);
+		return "/project/edit_project";
+	}
+
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	public void postEditProject(HttpServletRequest request,HttpServletResponse response, @RequestParam String name, 
+			@RequestParam String description, @RequestParam int projectId) throws IOException {
+		boolean result = projectService.updateProject(name, description, projectId);
+		response.sendRedirect(request.getContextPath() + "/risk/risk_list/" + projectId);
+	}
+
+	
 }

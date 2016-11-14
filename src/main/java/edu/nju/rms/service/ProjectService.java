@@ -11,5 +11,7 @@ public interface ProjectService {
 	public List<RiskProject> getAllRiskProject();
 
 	public RiskProject getProjectById(int projectId);
+
+	public boolean updateProject(String name, String description, Integer uid);
 	
 }

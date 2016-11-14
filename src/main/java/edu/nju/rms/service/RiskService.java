@@ -20,4 +20,6 @@ public interface RiskService {
 	public int addTrackItem(int itemId,String title,String description);
 	
 	public List<TrackItem> getTrackItemByRiskItemId(int riskId);
+
+	public boolean deleteRisks(String ids);
 }

@@ -3,6 +3,7 @@ package edu.nju.rms.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 import edu.nju.rms.model.RiskItem;
 
@@ -21,13 +22,26 @@ public class RiskItemDaoImpl implements RiskItemDao {
 
 	@Override
 	public boolean deleteRiskItemById(int id) {
-		// TODO Auto-generated method stub
+		String hql = "delete from RiskItem where id='" + id + "'";
+		Query query = baseDao.getSession().createQuery(hql);
+		int result = query.executeUpdate();
+		if(result > 0)
+			return true;
 		return false;
 	}
 
 	@Override
 	public boolean updateRiskItem(RiskItem item) {
-		// TODO Auto-generated method stub
+		String hql = "update RiskItem set title='" + item.getTitle()  + 
+					"', content='" + item.getContent() + 
+					"', levelChance="	+ item.getLevelChance() + 
+					", levelInfluence=" + item.getLevelInfluence() + 
+					", follwer_id=" +  item.getFollower().getId() + 
+					" where id=" + item.getId();
+		Query query = baseDao.getSession().createQuery(hql);
+		int result = query.executeUpdate();
+		if(result == 1)
+			return true;
 		return false;
 	}
 
@@ -48,6 +62,15 @@ public class RiskItemDaoImpl implements RiskItemDao {
 		Query query = baseDao.getSession().createQuery(hql);
 		List<RiskItem> list = query.list();
 		return list;
+	}
+
+	@Override
+	public int deleteRiskItems(String ids) {
+		String hql = "delete RiskItem where id in (" + ids + ")";
+		Session session = baseDao.getSession();
+		Query query = session.createQuery(hql);
+		int result = query.executeUpdate();
+		return result;
 	}
 
 }

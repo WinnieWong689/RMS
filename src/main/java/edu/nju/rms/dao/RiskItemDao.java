@@ -15,6 +15,8 @@ public interface RiskItemDao {
 	public RiskItem getRiskItemById(int id);
 	
 	public List<RiskItem> getRiskItemByProjectId(int projectId);
+
+	public int deleteRiskItems(String ids);
 	
 
 }

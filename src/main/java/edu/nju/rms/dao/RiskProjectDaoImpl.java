@@ -39,4 +39,16 @@ public class RiskProjectDaoImpl implements RiskProjectDao {
 		return list.get(0);
 	}
 
+	@Override
+	public boolean updateProject(String name, String description, Integer id) {
+		String hql = "update RiskProject set name='" + name  + 
+				"', description='" + description + 
+				"' where id=" + id;
+		Query query = baseDao.getSession().createQuery(hql);
+		int result = query.executeUpdate();
+		if(result == 1)
+			return true;
+		return false;
+	}
+
 }

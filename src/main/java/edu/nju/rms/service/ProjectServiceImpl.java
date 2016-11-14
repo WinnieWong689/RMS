@@ -32,4 +32,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return riskProjectDao.getProjectById(projectId);
 	}
 
+	@Override
+	public boolean updateProject(String name, String description, Integer id) {
+		return riskProjectDao.updateProject(name, description, id);
+	}
+
 }

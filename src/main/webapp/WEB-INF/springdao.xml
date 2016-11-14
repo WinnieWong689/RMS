@@ -23,6 +23,10 @@
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
 	
+	<bean id="riskTriggerDao" class="edu.nju.rms.dao.RiskTriggerDaoImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
 	<bean id="userService" class="edu.nju.rms.service.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
@@ -30,6 +34,7 @@
 	<bean id="riskService" class="edu.nju.rms.service.RiskServiceImpl">
 		<property name="riskItemDao" ref="riskItemDao"></property>
 		<property name="trackItemDao" ref="trackItemDao"></property>
+		<property name="triggerDao" ref="riskTriggerDao"></property>
 	</bean>
 	
 	<bean id="authService" class="edu.nju.rms.service.AuthServiceImpl">
@@ -47,6 +52,7 @@
 	<bean id="riskController" class="edu.nju.rms.controller.RiskController">
 		<property name="riskService" ref="riskService"></property>
 		<property name="projectService" ref="projectService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	
 	<bean id="userController" class="edu.nju.rms.controller.UserController">

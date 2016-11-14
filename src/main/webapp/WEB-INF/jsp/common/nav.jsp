@@ -15,7 +15,8 @@
 	<div class="collapse navbar-collapse" id="navbar">
 		<ul class="nav navbar-nav">
 			<% 
-				if (request.getSession().getAttribute("uid") != null) {
+				if (request.getSession().getAttribute("uid") != null
+					&& request.getSession().getAttribute("admin") == null) {
 					out.print("<li><a href='" + path + "/project'>风险项目</a></li>");
 				}
 				if (request.getSession().getAttribute("admin") != null) {
